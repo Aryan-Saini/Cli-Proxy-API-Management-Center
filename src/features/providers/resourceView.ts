@@ -42,7 +42,9 @@ export const partitionProviderGroups = (
       (left, right) =>
         QUICK_FILL_BRAND_ORDER.indexOf(left.id as (typeof QUICK_FILL_BRAND_ORDER)[number]) -
         QUICK_FILL_BRAND_ORDER.indexOf(right.id as (typeof QUICK_FILL_BRAND_ORDER)[number])
-    ),
+    )
+    // my-changes: hide the Quick Fill affiliate resellers (FennoAI, Qiniu, AIcodemirror).
+    .slice(0, 0),
 });
 
 /** Count the connections shown as cards, not the credentials inside each connection. */

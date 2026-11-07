@@ -144,7 +144,9 @@ export function OAuthPage() {
   const dialogCard =
     dialog?.kind === 'oauth' ? providerCards.find((card) => card.id === dialog.id) : undefined;
   const providerCount = providerCards.length;
-  const sponsorCards = providerCards.filter(isSponsor);
+  // my-changes: hide the sponsor banner (Kimi affiliate sign-up links). Sponsor
+  // providers are also excluded from regularCards, so they vanish entirely.
+  const sponsorCards = providerCards.filter(isSponsor).slice(0, 0);
   const regularCards = providerCards.filter((card) => !isSponsor(card));
   // 赞助商卡占级联的第 0 位，其余磁贴顺延
   const tileIndexOffset = sponsorCards.length > 0 ? 1 : 0;

@@ -34,7 +34,8 @@ export function ProviderPicker({ groups, variant = 'sheet', onPick }: ProviderPi
     return group ? connectionCounts(group).total : 0;
   };
   const available = new Set(groups.map((group) => group.id));
-  const featured = QUICK_FILL_BRAND_ORDER.filter((brand) => available.has(brand));
+  // my-changes: hide the Quick Fill affiliate resellers (FennoAI, Qiniu, AIcodemirror).
+  const featured = QUICK_FILL_BRAND_ORDER.filter((brand) => available.has(brand)).slice(0, 0);
   const official = groups
     .map((group) => group.id)
     .filter((brand) => !isQuickFillBrand(brand) && !CUSTOM_BRANDS.has(brand) && brand !== 'kimi');
