@@ -21,7 +21,9 @@ export function ProviderCategoryList({ groups, activeBrand, onSelect }: Provider
     .sort(
       (left, right) =>
         QUICK_FILL_BRAND_ORDER.indexOf(left.id) - QUICK_FILL_BRAND_ORDER.indexOf(right.id)
-    );
+    )
+    // my-changes: hide the Quick Fill affiliate resellers (FennoAI, Qiniu, AIcodemirror).
+    .slice(0, 0);
   const providerGroups = groups.filter((g) => !QUICK_FILL_BRANDS.has(g.id));
 
   const renderGroups = (items: ProviderGroup[]) => (
